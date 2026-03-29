@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reggie's Brewhouse | Downtown Owatonna, MN</title>
+  <meta name="description" content="Reggie's Brewhouse — downtown Owatonna's home for craft beers, live music, pool & dart leagues, and good times. 220 N Cedar Ave. Open daily." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber:     #E8A020;
+      --amber-dk:  #CC8810;
+      --amber-glow: rgba(232,160,32,0.2);
+      --neon:      #FF6B35;
+      --neon-glow: rgba(255,107,53,0.15);
+      --dark:      #0C0A08;
+      --bar:       #141210;
+      --wood:      #1E1A16;
+      --slate:     #2A2622;
+      --mid:       #8A8078;
+      --light:     #C8C0B8;
+      --cream:     #F0E8DD;
+      --white:     #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4%;
+      height: 70px;
+      background: rgba(12,10,8,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(232,160,32,0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      background: var(--amber) !important;
+      color: var(--dark) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 4px;
+      font-weight: 800 !important;
+      transition: box-shadow 0.3s !important;
+    }
+
+    .nav-cta:hover { box-shadow: 0 0 20px var(--amber-glow); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1000&fit=crop') center/cover no-repeat;
+      filter: brightness(0.2) saturate(0.6);
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(232,160,32,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(12,10,8,0.5) 0%, transparent 30%, transparent 70%, var(--dark) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(232,160,32,0.1);
+      border: 1px solid rgba(232,160,32,0.25);
+      border-radius: 30px;
+      padding: 0.4rem 1.15rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 40px rgba(232,160,32,0.15);
+    }
+
+    .hero h1 .amber { color: var(--amber); }
+
+    .hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      letter-spacing: 0.2em;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 460px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-amber {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--dark);
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+
+    .btn-amber:hover {
+      box-shadow: 0 0 30px var(--amber-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-glass {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-glass:hover { border-color: var(--amber); background: rgba(232,160,32,0.05); }
+
+    /* ── WHAT'S ON TAP ── */
+    .tap {
+      background: var(--bar);
+      padding: 7rem 5%;
+      position: relative;
+    }
+
+    .tap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0.2;
+    }
+
+    .tap-header { margin-bottom: 3.5rem; }
+
+    .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: 0.04em;
+      line-height: 1.0;
+      margin-bottom: 1rem;
+    }
+
+    .body-text {
+      font-size: 0.95rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 480px;
+    }
+
+    .tap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .tap-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.25s;
+    }
+
+    .tap-card:hover {
+      border-color: rgba(232,160,32,0.3);
+      transform: translateY(-4px);
+    }
+
+    .tap-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .tap-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .tap-desc {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── EVENTS / ENTERTAINMENT ── */
+    .events {
+      background: var(--dark);
+      padding: 7rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .events-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background:
+        linear-gradient(160deg, rgba(232,160,32,0.2), rgba(255,107,53,0.1)),
+        url('https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop') center/cover no-repeat;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .events-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .event-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      transition: border-color 0.3s;
+    }
+
+    .event-item:hover { border-color: rgba(232,160,32,0.3); }
+
+    .event-icon {
+      width: 48px; height: 48px;
+      background: rgba(232,160,32,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .event-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .event-desc {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ── FOOD ── */
+    .food {
+      background: var(--bar);
+      padding: 7rem 5%;
+      text-align: center;
+    }
+
+    .food-header { margin-bottom: 3rem; }
+    .food-header .body-text { margin: 1rem auto 0; }
+
+    .food-features {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .food-feature {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      transition: border-color 0.3s;
+    }
+
+    .food-feature:hover { border-color: rgba(232,160,32,0.3); }
+
+    .food-feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .food-feature-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .food-feature-desc {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── HOURS & LOCATION ── */
+    .info {
+      background: var(--dark);
+      padding: 7rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .hours-grid { margin-top: 2rem; }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--mid); font-weight: 300; }
+    .hours-time { color: var(--white); font-weight: 600; }
+
+    .contact-items { margin-top: 2rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.92rem;
+    }
+
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: rgba(232,160,32,0.08);
+      border: 1px solid rgba(232,160,32,0.12);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item a { color: var(--amber); text-decoration: none; font-weight: 500; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    .map-embed {
+      margin-top: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .map-embed iframe {
+      width: 100%; height: 260px;
+      border: none; display: block;
+      filter: grayscale(0.8) brightness(0.7);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--bar);
+      text-align: center;
+      padding: 8rem 5%;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, var(--amber-glow), transparent 55%);
+    }
+
+    .cta-section > * { position: relative; z-index: 1; }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 440px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-logo span { color: var(--amber); }
+
+    .footer-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .fsoc {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .fsoc:hover { border-color: var(--amber); color: var(--amber); }
+
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      background: #060504;
+      padding: 1.25rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .footer-bottom a { color: var(--amber); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 960px) {
+      .tap-grid { grid-template-columns: 1fr 1fr; }
+      .events { grid-template-columns: 1fr; gap: 3rem; }
+      .info { grid-template-columns: 1fr; gap: 3rem; }
+      footer { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      section, .tap, .events, .food, .info { padding: 4rem 4%; }
+      .tap-grid { grid-template-columns: 1fr; }
+      .food-features { flex-direction: column; align-items: center; }
+      footer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><span>Reggie's</span> Brewhouse</a>
+    <ul class="nav-links">
+      <li><a href="#tap">Drinks</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#food">Menu</a></li>
+      <li><a href="#info">Hours</a></li>
+      <li><a href="#info" class="nav-cta">Visit Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">Downtown Owatonna Since 2012</div>
+      <h1>REGGIE'S<br /><span class="amber">BREWHOUSE</span></h1>
+      <div class="hero-sub">CRAFT BEER &middot; LIVE MUSIC &middot; GOOD TIMES</div>
+      <p class="hero-desc">Downtown Owatonna's home for specialty beers, live bands, pool & dart leagues, and the kind of nights you don't forget. Pull up a stool.</p>
+      <div class="hero-actions">
+        <a href="#events" class="btn-amber">See What's On</a>
+        <a href="#info" class="btn-glass">Hours & Location</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S ON TAP -->
+  <section class="tap" id="tap">
+    <div class="tap-header">
+      <p class="label">What's on Tap</p>
+      <h2 class="heading">Drinks Worth<br />Sticking Around For.</h2>
+      <p class="body-text">A large selection of craft and specialty beers on draft, plus blended drinks and cocktails. Whatever you're in the mood for, we've got it.</p>
+    </div>
+    <div class="tap-grid">
+      <div class="tap-card">
+        <div class="tap-icon">🍺</div>
+        <div class="tap-name">Draft Beer</div>
+        <div class="tap-desc">Rotating taps of craft, local, and classic brews. Always something new to try.</div>
+      </div>
+      <div class="tap-card">
+        <div class="tap-icon">🥃</div>
+        <div class="tap-name">Cocktails</div>
+        <div class="tap-desc">Blended drinks and cocktails mixed right. Ask about our house specials.</div>
+      </div>
+      <div class="tap-card">
+        <div class="tap-icon">🍷</div>
+        <div class="tap-name">Wine & More</div>
+        <div class="tap-desc">Not a beer person? We've got you covered with wine and seltzers too.</div>
+      </div>
+      <div class="tap-card">
+        <div class="tap-icon">🎰</div>
+        <div class="tap-name">Pull Tabs</div>
+        <div class="tap-desc">Try your luck. Proceeds support local organizations and sports teams.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events" id="events">
+    <div class="events-img"></div>
+    <div>
+      <p class="label">Entertainment</p>
+      <h2 class="heading">Something Going On<br />Every Week.</h2>
+      <p class="body-text">Live bands on weekends, leagues during the week, and the kind of energy that keeps you coming back. Reggie's is where Owatonna comes together.</p>
+      <div class="events-list">
+        <div class="event-item">
+          <div class="event-icon">🎸</div>
+          <div>
+            <div class="event-name">Live Bands — Friday & Saturday</div>
+            <div class="event-desc">Local and touring bands hitting the stage every weekend. Rock, country, and everything in between.</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">🎱</div>
+          <div>
+            <div class="event-name">Pool League</div>
+            <div class="event-desc">Weekly pool league on our tables. Competitive but friendly — all skill levels welcome.</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">🎯</div>
+          <div>
+            <div class="event-name">Dart League</div>
+            <div class="event-desc">Steel tip dart league running weekly. Sign up at the bar or just show up.</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">🎉</div>
+          <div>
+            <div class="event-name">Annual Street Dance</div>
+            <div class="event-desc">Reggie's shuts down the block for a night of live music, drinks, and downtown Owatonna at its best.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="food" id="food">
+    <div class="food-header">
+      <p class="label">Bar Bites</p>
+      <h2 class="heading">Pizza & More.</h2>
+      <p class="body-text">You came for the beer. You're staying for the pizza. Plus bar snacks and bites to keep you going all night.</p>
+    </div>
+    <div class="food-features">
+      <div class="food-feature">
+        <div class="food-feature-icon">🍕</div>
+        <div class="food-feature-name">Pizzas</div>
+        <div class="food-feature-desc">Our signature pizzas — made fresh and perfect with a cold beer.</div>
+      </div>
+      <div class="food-feature">
+        <div class="food-feature-icon">🍔</div>
+        <div class="food-feature-name">Bar Bites</div>
+        <div class="food-feature-desc">Tasty bites to keep the night going. Simple, satisfying, and shareable.</div>
+      </div>
+      <div class="food-feature">
+        <div class="food-feature-icon">🧺</div>
+        <div class="food-feature-name">Snacks & Apps</div>
+        <div class="food-feature-desc">Appetizers and snacks to pair with your drinks. Perfect for groups.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section class="info" id="info">
+    <div>
+      <p class="label">Hours</p>
+      <h2 class="heading">When We're Open.</h2>
+      <div class="hours-grid">
+        <div class="hours-row">
+          <span class="hours-day">Monday</span>
+          <span class="hours-time">2:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Tuesday</span>
+          <span class="hours-time">2:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Wednesday</span>
+          <span class="hours-time">2:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Thursday</span>
+          <span class="hours-time">2:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Friday</span>
+          <span class="hours-time">12:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Saturday</span>
+          <span class="hours-time">12:00 PM — 1:00 AM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Sunday</span>
+          <span class="hours-time">12:00 PM — 1:00 AM</span>
+        </div>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <a href="tel:5074136000">(507) 413-6000</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📘</div>
+          <a href="https://www.facebook.com/reggiesbrewhouse" target="_blank">Reggie's on Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="label">Find Us</p>
+      <h2 class="heading">Downtown Owatonna.</h2>
+      <p class="body-text">220 N Cedar Ave — right in the heart of downtown. Street parking available. Walk-in anytime, no reservations needed.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span style="color:var(--light);">220 N Cedar Ave<br />Owatonna, MN 55060</span>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2850!2d-93.226!3d44.085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s220+N+Cedar+Ave%2C+Owatonna%2C+MN+55060!5e0!3m2!1sen!2sus!4v1234"
+          allowfullscreen="" loading="lazy"
+          title="Reggie's Brewhouse Location">
+        </iframe>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=220+N+Cedar+Ave+Owatonna+MN+55060" target="_blank" class="btn-amber" style="display:inline-block; margin-top:1.5rem;">Get Directions</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p class="label">Come Hang</p>
+    <h2 class="heading">Your Stool's Waiting.</h2>
+    <p class="cta-sub">Whether it's a cold one after work, live music on a Saturday, or just a good time with friends — Reggie's is the spot. See you downtown.</p>
+    <a href="tel:5074136000" class="btn-amber">Call (507) 413-6000</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo"><span>Reggie's</span> Brewhouse</div>
+      <p class="footer-desc">Downtown Owatonna's home for craft beer, live music, pool & dart leagues, and good times since 2012. Owned & operated by Derek & Kayla Skala.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/reggiesbrewhouse" target="_blank" class="fsoc">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>The Bar</h4>
+      <ul>
+        <li><a href="#tap">Drinks</a></li>
+        <li><a href="#food">Menu</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#events">Live Music</a></li>
+        <li><a href="#events">Leagues</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="#info">Hours</a></li>
+        <li><a href="#info">Location</a></li>
+        <li><a href="tel:5074136000">Call Us</a></li>
+        <li><a href="https://www.facebook.com/reggiesbrewhouse" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Reggie's Brewhouse &middot; 220 N Cedar Ave, Owatonna, MN</span>
+    <a href="tel:5074136000">(507) 413-6000</a>
+  </div>
+
+</body>
+</html>
