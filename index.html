@@ -370,6 +370,96 @@
       line-height: 1.5;
     }
 
+    /* ── FACEBOOK EVENTS FEED ── */
+    .fb-events {
+      background: var(--dark);
+      padding: 7rem 5%;
+      position: relative;
+    }
+
+    .fb-events::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0.15;
+    }
+
+    .fb-events-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .fb-events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .fb-embed-container {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .fb-events-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .fb-events-note {
+      background: rgba(232,160,32,0.06);
+      border: 1px solid rgba(232,160,32,0.15);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .fb-events-note-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+
+    .fb-events-note-text {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .fb-events-cta {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1.75rem;
+      text-align: center;
+    }
+
+    .fb-events-cta .heading {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .fb-events-cta .body-text {
+      margin: 0 auto 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 960px) {
+      .fb-events-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── FOOD ── */
     .food {
       background: var(--bar);
@@ -607,6 +697,7 @@
     <ul class="nav-links">
       <li><a href="#tap">Drinks</a></li>
       <li><a href="#events">Events</a></li>
+      <li><a href="#upcoming">Upcoming</a></li>
       <li><a href="#food">Menu</a></li>
       <li><a href="#info">Hours</a></li>
       <li><a href="#info" class="nav-cta">Visit Us</a></li>
@@ -695,6 +786,57 @@
             <div class="event-name">Annual Street Dance</div>
             <div class="event-desc">Reggie's shuts down the block for a night of live music, drinks, and downtown Owatonna at its best.</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACEBOOK EVENTS FEED -->
+  <section class="fb-events" id="upcoming">
+    <div class="fb-events-header">
+      <div>
+        <p class="label">Upcoming Events</p>
+        <h2 class="heading">What's Coming Up.</h2>
+        <p class="body-text">Live bands, special nights, and events — straight from our Facebook page. Updated automatically so you always know what's happening.</p>
+      </div>
+      <a href="https://www.facebook.com/reggiesbrewhouse/events" target="_blank" class="btn-amber" style="padding:0.7rem 1.5rem;">See All Events on Facebook</a>
+    </div>
+    <div class="fb-events-grid">
+      <div class="fb-embed-container">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="abc123"></script>
+        <div class="fb-page"
+          data-href="https://www.facebook.com/reggiesbrewhouse"
+          data-tabs="events"
+          data-width="500"
+          data-height="500"
+          data-small-header="true"
+          data-adapt-container-width="true"
+          data-hide-cover="false"
+          data-show-facepile="false">
+          <blockquote cite="https://www.facebook.com/reggiesbrewhouse" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/reggiesbrewhouse">Reggie's Brewhouse on Facebook</a>
+          </blockquote>
+        </div>
+      </div>
+      <div class="fb-events-sidebar">
+        <div class="fb-events-note">
+          <div class="fb-events-note-title">How This Works</div>
+          <div class="fb-events-note-text">Every event posted to the Reggie's Brewhouse Facebook page shows up here automatically. No extra work — just post your event on Facebook and it appears on your website in real time.</div>
+        </div>
+        <div class="fb-events-note">
+          <div class="fb-events-note-title">Weekly Regulars</div>
+          <div class="fb-events-note-text">
+            <strong style="color:var(--white);">Pool League</strong> — Weekly league nights<br />
+            <strong style="color:var(--white);">Dart League</strong> — Steel tip, all skill levels<br />
+            <strong style="color:var(--white);">Live Bands</strong> — Every Friday & Saturday<br />
+            <strong style="color:var(--white);">Pull Tabs</strong> — Available daily
+          </div>
+        </div>
+        <div class="fb-events-cta">
+          <h3 class="heading">Want to Play Here?</h3>
+          <p class="body-text">Bands and musicians — reach out to book a gig at Reggie's.</p>
+          <a href="tel:5074136000" class="btn-amber" style="padding:0.7rem 1.5rem;">Call (507) 413-6000</a>
         </div>
       </div>
     </div>
